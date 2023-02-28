@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("gifs/trending?api_key=3CoURoLhUwIwuMvxOs3Wq5jjFt1K2y9X")
+    @GET("gifs/trending?api_key=3CoURoLhUwIwuMvxOs3Wq5jjFt1K2y9X&limit=25")
     suspend fun getGifList(): Response<GifListDto>
 }
