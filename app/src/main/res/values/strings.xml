@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Giphy</string>
+    <string name="rating">rating: %s</string>
+    <string name="type">type: %s</string>
 </resources>
