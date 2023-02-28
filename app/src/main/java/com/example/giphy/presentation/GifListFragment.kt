@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.giphy.R
 import com.example.giphy.databinding.FragmentGifListBinding
+import com.example.giphy.presentation.adapters.GifListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GifListFragment: Fragment(R.layout.fragment_gif_list) {
+class GifListFragment : Fragment(R.layout.fragment_gif_list) {
+
+    private val viewModel: GifViewModel by viewModels()
 
     private var _binding: FragmentGifListBinding? = null
     private val binding: FragmentGifListBinding
@@ -27,5 +32,13 @@ class GifListFragment: Fragment(R.layout.fragment_gif_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = GifListAdapter()
+        binding.recyclerViewGifList.adapter = adapter
+        binding.recyclerViewGifList.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        viewModel.gifList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
     }
 }
