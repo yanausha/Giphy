@@ -17,6 +17,7 @@ class GifMapper @Inject constructor() {
         dto.imageDto.originImageDto.url,
         dto.type,
         dto.rating,
-        dto.giphyUrl
+        dto.giphyUrl,
+        dto.id
     )
 }
