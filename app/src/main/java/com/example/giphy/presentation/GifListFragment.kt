@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.giphy.R
 import com.example.giphy.databinding.FragmentGifListBinding
 import com.example.giphy.presentation.adapters.GifListAdapter
@@ -35,7 +35,10 @@ class GifListFragment : Fragment(R.layout.fragment_gif_list) {
 
         val adapter = GifListAdapter()
         binding.recyclerViewGifList.adapter = adapter
-        binding.recyclerViewGifList.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerViewGifList.layoutManager = StaggeredGridLayoutManager(
+            2,
+            StaggeredGridLayoutManager.VERTICAL
+        )
 
         viewModel.gifList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
