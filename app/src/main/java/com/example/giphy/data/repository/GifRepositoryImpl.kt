@@ -15,4 +15,10 @@ class GifRepositoryImpl @Inject constructor(
         val response = apiService.getGifList()
         return mapper.mapListDtoToListEntity(checkNotNull(response.body()))
     }
+
+    override suspend fun searchGifList(str: String): List<Gif>? {
+        val response = apiService.searchGifList(str)
+        return if (response.isSuccessful) mapper.mapListDtoToListEntity(response.body()!!)
+        else null
+    }
 }
