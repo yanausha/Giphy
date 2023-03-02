@@ -11,12 +11,16 @@
         android:label="fragment_gif_list"
         tools:layout="@layout/fragment_gif_list">
         <action
-            android:id="@+id/action_gifListFragment_to_detailInfoFragment"
+            android:id="@+id/gifListToDetailInfo"
             app:destination="@id/detailInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailInfoFragment"
         android:name="com.example.giphy.presentation.DetailInfoFragment"
         android:label="fragment_detail_info"
-        tools:layout="@layout/fragment_detail_info" />
+        tools:layout="@layout/fragment_detail_info" >
+        <argument
+            android:name="gif"
+            app:argType="com.example.giphy.domain.entity.Gif" />
+    </fragment>
 </navigation>
