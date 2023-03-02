@@ -1,12 +1,19 @@
 # Giphy
 
 Kotlin, Android SDK, XML
+
 API https://giphy.com/
+
 Clean Arcitecture, MVVM
+
 Single Activity
+
 Retrofit2
+
 Dagger Hilt
+
 Glide
+
 Jetpack Navigation
 
 # DEMO
