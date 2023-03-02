@@ -1,13 +1,13 @@
 package com.example.giphy.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.giphy.R
 import com.example.giphy.databinding.FragmentGifListBinding
@@ -44,6 +44,11 @@ class GifListFragment : Fragment(R.layout.fragment_gif_list) {
         setTrendingGifList()
         setFoundGifList()
         useProgress()
+        adapter.onGifClickListener = {
+            findNavController().navigate(
+                GifListFragmentDirections.gifListToDetailInfo(it)
+            )
+        }
     }
 
     private fun useProgress() {
@@ -60,9 +65,8 @@ class GifListFragment : Fragment(R.layout.fragment_gif_list) {
         binding.editText.addTextChangedListener {
             job?.cancel()
             job = MainScope().launch {
-                val str = it?.trim()?: ""
+                val str = it?.trim() ?: ""
                 if (str.toString().isNotEmpty()) {
-                    Log.d("Test", str.toString())
                     viewModel.searchGifList(it.toString())
                     viewModel.gifList.observe(viewLifecycleOwner) {
                         adapter.submitList(it)
