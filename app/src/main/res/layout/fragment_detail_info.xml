@@ -20,6 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:autoLink="web"
+        android:linksClickable="true"
         tools:text="web site" />
 
     <TextView

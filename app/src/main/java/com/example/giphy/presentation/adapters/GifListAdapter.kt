@@ -10,6 +10,8 @@ import com.example.giphy.domain.entity.Gif
 
 class GifListAdapter : ListAdapter<Gif, GifViewHolder>(GifDiffCallback) {
 
+    var onGifClickListener: ((gif: Gif) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GifViewHolder {
         val binding = GifItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -22,6 +24,9 @@ class GifListAdapter : ListAdapter<Gif, GifViewHolder>(GifDiffCallback) {
     override fun onBindViewHolder(holder: GifViewHolder, position: Int) {
         val gifInfo = getItem(position)
         Glide.with(holder.itemView).load(gifInfo.imageUrl).into(holder.binding.imageViewGif)
+        holder.binding.root.setOnClickListener {
+            onGifClickListener?.invoke(gifInfo)
+        }
     }
 }
 
