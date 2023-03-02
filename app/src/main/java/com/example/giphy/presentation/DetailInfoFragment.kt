@@ -33,6 +33,7 @@ class DetailInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Glide.with(this).load(args.gif.imageUrl).into(binding.imageViewPoster)
         with(binding) {
+            textViewWebSite.text = args.gif.giphyUrl
             textViewType.text = String.format(getString(R.string.type), args.gif.type)
             textViewRating.text= String.format(getString(R.string.rating), args.gif.rating)
         }
