@@ -90,4 +90,9 @@ class GifListFragment : Fragment(R.layout.fragment_gif_list) {
             StaggeredGridLayoutManager.VERTICAL
         )
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

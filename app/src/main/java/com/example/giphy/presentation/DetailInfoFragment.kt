@@ -38,4 +38,9 @@ class DetailInfoFragment : Fragment() {
             textViewRating.text= String.format(getString(R.string.rating), args.gif.rating)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
